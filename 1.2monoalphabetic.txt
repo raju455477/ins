@@ -1,0 +1,53 @@
+//1.2monoalphabetic
+
+//prac1.2
+//monoalphabetic
+
+import java.util.Scanner;
+
+public class Monoalphabetic {
+
+	public static void main(String[] args) {
+		final char RALPHABETS[]= {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+		final char MALPHABETS[]= {'f','g','a','b','u','v','k','q','r','h','i','j','t','c','d','e','f','w','x','y','m','n','o','p','z'};
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println(RALPHABETS.length);
+		System.out.println(MALPHABETS.length);
+		
+		String pText;
+		char citext[] = new char[20];
+		char detext[] = new char[20];
+		int i, j = 0, l;
+		
+		System.out.println("Enter txt: ");
+		pText = sc.nextLine();
+		l = (pText.length());
+		pText = pText.toLowerCase();
+		for(i=0; i<l; i++) {
+			for(j=0;j<26;j++) {
+				if(RALPHABETS[j] == pText.charAt(i)) {
+					citext[i] = MALPHABETS[j];
+					break;
+				}
+			}
+		}
+		System.out.println("Ciper Text: ");
+		for(i=0; i<pText.length(); i++) {
+			System.out.println(citext[i]);
+		}
+		String b = new String(citext);
+		for(i=0;i<l;i++) {
+			for(j=0;j<26;j++) {
+				if(MALPHABETS[j]==b.charAt(i)) {
+					detext[i] = RALPHABETS[j];
+					break;
+				}
+			}
+		}
+		System.out.println("Og txt: ");
+		for(i=0;i<pText.length(); i++) {
+			System.out.print(detext[i]);
+		}
+	}
+}

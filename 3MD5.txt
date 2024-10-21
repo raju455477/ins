@@ -1,0 +1,35 @@
+//3MD5
+
+//prac3
+//MD5
+
+package MD5;
+
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class MD5 {
+
+	public static String toNextString(byte[] hash) {
+		BigInteger number = new BigInteger(1, hash);
+		StringBuilder hexString = new StringBuilder(number.toString(16));
+		while(hexString.length()<31) {
+			hexString.insert(0, '0');
+		}
+		return hexString.toString();
+	}
+	//driver code
+	public static void main(String[] args) throws NoSuchAlgorithmException {
+		try {
+			String s1 = "Information and Security ";
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] hash = md.digest(s1.getBytes(StandardCharsets.UTF_8));
+			System.out.println("\n" + s1 + ":" + toNextString(hash));
+		} catch(NoSuchAlgorithmException e) {
+			System.out.println("Exception thrown for incorrect algorithm :" + e);
+		}
+	}
+
+}
